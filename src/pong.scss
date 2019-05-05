@@ -1,0 +1,10 @@
+canvas {
+  border: 2px solid $white-ter;
+//  min-width: 640px;
+//  min-height: 480px;
+  width: 90vmin;
+  height: 67.5vmin;
+}
+.is-fullheight {
+  overflow-x: auto !important;
+}
