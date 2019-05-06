@@ -16,18 +16,20 @@ const ball = new Ball(cw/2, ch/2, 2*yUnit, randomRange(4,8), randomRange(-6,6));
 const padHuman = new Rect(cw-6*yUnit, ch/2-10*yUnit, 3*yUnit, 20*yUnit);
 const padComputer = new Rect(3*yUnit, ch/2-10*yUnit, 3*yUnit, 20*yUnit);
 
-
+const keys: boolean[] = [];
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowUp' || e.key === 'w') padHuman.y -= 15;
-  if (e.key === 'ArrowDown' || e.key === 's') padHuman.y += 15;
-  //console.table(padHuman);
- });
-
-// for testing purposes
-canvas.addEventListener('mousemove', (e) => {
-  ball.x = e.clientX - ((window.innerWidth - scrollWidth - cw)/2);
-  ball.y = e.clientY - ((window.innerHeight- ch)/2);
+  keys[e.keyCode] = true;
 });
+document.addEventListener('keyup', (e) => {
+  delete keys[e.keyCode];
+});
+
+
+// // for testing purposes
+// canvas.addEventListener('mousemove', (e) => {
+//   ball.x = e.clientX - ((window.innerWidth - scrollWidth - cw)/2);
+//   ball.y = e.clientY - ((window.innerHeight- ch)/2);
+// });
 
 
 function draw() {
@@ -53,21 +55,34 @@ function draw() {
   ctx.closePath();
   ctx.stroke();
   
-  // ball animation
   ctx.restore();
+
+  // score counter left
+  ctx.font = "30px Courier New";
+  ctx.textAlign = 'center';
+  ctx.strokeText(ball.score[1].toString(), cw/2 - 6*xUnit, 6*xUnit);
+
+  // score counter left
+  ctx.restore();
+  ctx.strokeText(ball.score[0].toString(), cw/2 + 6*xUnit, 6*xUnit);
+
+  // ball animation
   ball.draw(ctx);
-  //ball.animate(cw, ch);
+  ball.animate(cw, ch);
   
   // game pads
   // left: computer
   padComputer.draw(ctx);
-  //padComputer.y = ball.y - 10*yUnit;
+  padComputer.y = ball.y - 10*yUnit;
   padComputer.collisionWith(ball);
   
   // right: human
-  padHuman.draw(ctx);
+  padHuman.draw(ctx, cw, ch);
   padHuman.collisionWith(ball);
-   
+
+  if (keys[38] || keys[87]) padHuman.y -= 12;
+  if (keys[40] || keys[83]) padHuman.y += 12;
+  
   window.requestAnimationFrame(draw);
 }
 
