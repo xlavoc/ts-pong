@@ -13,8 +13,8 @@ const xUnit: number = cw / 100, yUnit: number = (ch / 100);
 const ctx: CanvasRenderingContext2D = canvas.getContext('2d');
 
 const ball = new Ball(cw/2, ch/2, 2*yUnit, randomRange(4,8), randomRange(-6,6));
-const padHuman = new Rect(cw-6*yUnit, ch/2-10*yUnit, 3*yUnit, 20*yUnit);
-const padComputer = new Rect(3*yUnit, ch/2-10*yUnit, 3*yUnit, 20*yUnit);
+const padRight = new Rect(cw-6*yUnit, ch/2-10*yUnit, 3*yUnit, 20*yUnit);
+const padLeft = new Rect(3*yUnit, ch/2-10*yUnit, 3*yUnit, 20*yUnit);
 
 const keys: boolean[] = [];
 document.addEventListener('keydown', (e) => {
@@ -72,16 +72,17 @@ function draw() {
   
   // game pads
   // left: computer
-  padComputer.draw(ctx);
-  padComputer.y = ball.y - 10*yUnit;
-  padComputer.collisionWith(ball);
+  padLeft.draw(ctx);
+  padLeft.autoPlayMode(ball);
+  padLeft.collisionWith(ball);
   
   // right: human
-  padHuman.draw(ctx, cw, ch);
-  padHuman.collisionWith(ball);
+  padRight.draw(ctx, cw, ch);
+  padRight.autoPlayMode(ball);
+  padRight.collisionWith(ball);
 
-  if (keys[38] || keys[87]) padHuman.y -= 12;
-  if (keys[40] || keys[83]) padHuman.y += 12;
+  if (keys[38] || keys[87]) padRight.y -= 12;
+  if (keys[40] || keys[83]) padRight.y += 12;
   
   window.requestAnimationFrame(draw);
 }

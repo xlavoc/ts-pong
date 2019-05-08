@@ -2,7 +2,7 @@ import { Ball } from './ball';
 
 export class Rect {
   
-  constructor(private x: number, public y: number, public width: number, private height: number, public color?: string) { }
+  constructor(public x: number, public y: number, public width: number, public height: number, public color?: string) { }
   
   draw(context: CanvasRenderingContext2D, width?: number, height?: number): void {
     if (this.color) context.fillStyle = this.color;
@@ -10,8 +10,12 @@ export class Rect {
     if (width || height) {
       if (this.y <= 0) this.y = 0;
       if (this.y + this.height >= height) this.y = height - this.height;
-    }
+    };
   };
+
+  autoPlayMode(ball: Ball) {
+    this.y = ball.y - this.height/2;
+  }
   
   collisionWith(ball: Ball) {
   /*  if (ball.x + ball.radius >= this.x &&

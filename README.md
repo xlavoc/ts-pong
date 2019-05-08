@@ -1,9 +1,10 @@
 # ts-pong
-Simple game Pong: Typescipt, webpack and canvas
+Simple game Pong: typescipt, webpack and canvas
 
 Game created to learn typescipt in action:
 - classes
-- modules, import-export
+- ES modules
+- types
 
 and for webpack dev-prod envionment setup  
 and to refresh canvas basics  

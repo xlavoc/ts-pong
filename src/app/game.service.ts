@@ -1,4 +1,4 @@
-// fetch css style of element
+// fetch css style of dom element
 export function getStyle(el: HTMLElement, styleProp: string): string {
   return window.getComputedStyle(el).getPropertyValue(styleProp);
 }
