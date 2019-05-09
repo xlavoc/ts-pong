@@ -1,4 +1,5 @@
-# ts-pong
+![alt text](ts-pong.svg "ts-pong game logo")  
+
 Simple game Pong: typescipt, webpack and canvas
 
 Game created to learn typescipt in action:
