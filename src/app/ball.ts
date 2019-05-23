@@ -10,6 +10,7 @@ export class Ball {
     context.closePath();
     context.fill();
   }
+
   animate(width: number, height: number): void {
     if (this.vx || this.vy) {
       this.x += this.vx;

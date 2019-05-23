@@ -13,9 +13,13 @@ export class Rect {
     };
   };
 
+  blurAdd(context: CanvasRenderingContext2D) {
+    context.filter = 'blur(10px)';
+  };
+
   autoPlayMode(ball: Ball) {
     this.y = ball.y - this.height/2;
-  }
+  };
   
   collisionWith(ball: Ball) {
   /*  if (ball.x + ball.radius >= this.x &&

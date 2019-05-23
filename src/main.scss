@@ -1,18 +1,18 @@
-@charset "utf-8";
+//@charset "utf-8";
 
 // Set your brand colors
-$turquoise-new: hsl(180, 60%, 50%);
+//$turquoise-new: hsl(180, 60%, 50%);
 
 // Update Bulma's global variables
-$primary: $turquoise-new;
+//$primary: $turquoise-new;
 
 // Update some of Bulma's component variables
 // $body-background-color: $beige-lighter;
 
 //@import "~bulma/bulma";
-@import "../node_modules/bulma/sass/utilities/_all.sass";
-@import "../node_modules/bulma/sass/base/_all.sass";
+//@import "../node_modules/bulma/sass/utilities/_all.sass";
+//@import "../node_modules/bulma/sass/base/_all.sass";
 // @import "../node_modules/bulma/sass/elements/title.sass";
-@import "../node_modules/bulma/sass/layout/hero.sass";
+//@import "../node_modules/bulma/sass/layout/hero.sass";
 
 @import './pong.scss';

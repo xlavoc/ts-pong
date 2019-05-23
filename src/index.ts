@@ -16,6 +16,8 @@ const ball = new Ball(cw/2, ch/2, 2*yUnit, randomRange(4,8), randomRange(-6,6));
 const padRight = new Rect(cw-6*yUnit, ch/2-10*yUnit, 3*yUnit, 20*yUnit);
 const padLeft = new Rect(3*yUnit, ch/2-10*yUnit, 3*yUnit, 20*yUnit);
 
+const startMenu = new Rect(0, 0, cw, ch, 'rgba(255,255,255,.3)');
+
 const keys: boolean[] = [];
 document.addEventListener('keydown', (e) => {
   keys[e.keyCode] = true;
@@ -83,6 +85,9 @@ function draw() {
 
   if (keys[38] || keys[87]) padRight.y -= 12;
   if (keys[40] || keys[83]) padRight.y += 12;
+
+  startMenu.draw(ctx);
+  startMenu.blurAdd(ctx);
   
   window.requestAnimationFrame(draw);
 }

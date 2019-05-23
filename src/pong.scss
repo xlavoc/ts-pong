@@ -1,10 +1,77 @@
-canvas {
-  border: 2px solid $white-ter;
+$black: rgb(54, 54, 54);
+$white: rgb(245, 245, 245);
+$gray-light: #ccc;
+$gray-dark: #444;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $black;
+  color: $gray-light;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-style: normal;
+  font-variant: normal;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.1rem;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+canvas, #gameMenu {
+  position: absolute;
 //  min-width: 640px;
 //  min-height: 480px;
-  width: 90vmin;
-  height: 67.5vmin;
+  width: 96vmin;
+  height: 72vmin;
+
+  svg {
+    display: block;
+    margin: 10% auto;
+    max-width: 629px;
+    height: auto;
+    animation:  sbs 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) .5s infinite;
+  }
+  @keyframes sbs
+  {
+    0% { transform:scale(1); }
+    50% { transform:scale(1.05); }
+    100% { transform:scale(1); }
+  }
+
+  .colWrapper {
+    display: flex;
+    align-items: center;
+    height: 20vmin;
+
+    .col {
+      width: 50%;
+
+      button {
+        display: block;
+        margin: auto;
+        background: transparent;
+        padding: 1rem;
+        border: 1px solid $white;
+        font: inherit;
+        color: $gray-light;
+        text-shadow: 1px 1px $gray-dark;
+        cursor: pointer;
+
+        &:hover {
+          color: transparent;
+          text-shadow: 1px 1px $gray-light;
+          background-color: $gray-dark;
+        }
+      }
+    }
+  }
 }
-.is-fullheight {
-  overflow-x: auto !important;
+canvas {
+  border: 2px solid $white;
 }
